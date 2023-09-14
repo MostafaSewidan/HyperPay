@@ -1,5 +1,5 @@
 {
-    "name": "maree/hyper-pay",
+    "name": "maree-sewidan/hyper-pay",
     "description": "package to pay with hyper pay payment gateway",
     "type": "library",
     "license": "MIT",

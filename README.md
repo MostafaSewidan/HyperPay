@@ -4,7 +4,7 @@
 You can install the package via [Composer](https://getcomposer.org).
 
 ```bash
-composer require maree/hyper-pay
+composer require maree-sewidan/hyper-pay
 ```
 Publish your hyper-pay config file with
 
