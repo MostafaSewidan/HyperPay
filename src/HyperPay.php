@@ -4,7 +4,7 @@ namespace maree\hyperPay;
 class HyperPay {
     //$customerInfo = ['email' => 'maree@site.com' , 'country' => 'EG' , 'givenName' => 'mohamed maree' ,'surname' => 'mohamed maree' , 'street1' => '23 elmagd' ,'city' => 'almehalla' ,'state' => 'gharbia' , 'postcode' => '1234']
     //$brand = VISA MASTER || STC_PAY || MADA || APPLEPAY || AMEX
-    public static function checkout($amount = 0.0 ,$brand = 'VISA MASTER',$customerInfo = []) {
+    public static function checkout($amount = 0.0 ,$brand = 'VISA MASTER',$customerInfo = [],$merchantTransactionId = null) {
             if(config('hyperPay.mode') == 'live'){
                $request_url = config('hyperPay.request_live_url');
                $curlopt     = true;
@@ -16,10 +16,11 @@ class HyperPay {
             }
             $entityId = config('hyperPay.entityIds.'.$brand);
             $amount = number_format((float)$amount, 2, '.', '');
+            $merchantTransactionId = $merchantTransactionId ?? rand(1111111,9999999);
             $data = "entityId=".$entityId.
                 "&amount=".$amount.
                 "&currency=".config('hyperPay.currency').
-                "&merchantTransactionId=".rand(1111111,9999999).
+                "&merchantTransactionId=".$merchantTransactionId.
                 "&customer.email=".$customerInfo['email'].
                 "&paymentType=DB".
                 "&billing.country=".$customerInfo['country'].
