@@ -31,7 +31,7 @@ class HyperPay {
                 "&billing.state=".$customerInfo['state'].
                 "&billing.postcode=".$customerInfo['postcode'];
             $data .= $testMode;    
-logger('data', $data);
+            
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $request_url);
             curl_setopt($ch, CURLOPT_HTTPHEADER, array("Authorization:Bearer ".config('hyperPay.token')));
